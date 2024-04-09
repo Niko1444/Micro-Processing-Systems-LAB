@@ -126,15 +126,25 @@ int main(void)
 
   	  if (getTimer2Flag())
   	  {
+            second++;
+            if (second >= 60)
+            {
+                second = 0;
+                minute++;
+                if (minute >= 60)
+                {
+                    minute = 0;
+                    hour++;
+                    if (hour >= 24)
+                    {
+                        hour = 0;
+                    }
+                }
+            }
   		  updateClockBuffer();
   		  setTimer2(100);
   	  }
-
-      /* USER CODE END WHILE */
-
-      /* USER CODE BEGIN 3 */
     }
-    /* USER CODE END 3 */
   }
 
 /**
@@ -442,22 +452,6 @@ void update7SEG(int index)
 
 void updateClockBuffer()
 {
-    second++;
-    if (second >= 60)
-    {
-        second = 0;
-        minute++;
-        if (minute >= 60)
-        {
-            minute = 0;
-            hour++;
-            if (hour >= 24)
-            {
-                hour = 0;
-            }
-        }
-    }
-
     led_buffer[4] = second / 10;
     led_buffer[5] = second % 10;
     led_buffer[2] = minute / 10;
