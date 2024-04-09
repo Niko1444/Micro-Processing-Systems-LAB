@@ -45,7 +45,7 @@
 const int MAX_LED = 6;
 int index_led = 0;
 int led_buffer[6] = {1, 2, 3, 4, 5, 6};
-int hour = 0, minute = 0, second = 0;
+int hour = 15, minute = 8, second = 50;
 
 /* USER CODE END PV */
 
